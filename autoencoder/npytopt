@@ -1,0 +1,14 @@
+import numpy as np
+import torch
+import matplotlib.pyplot as plt
+# Step 1: Load the .npy file into a NumPy array
+npy_array = np.load('D:/20241.1-2024.8.31/Micro+photodiode+denoise/GRID cropus dataset#1/visual/croplip/S1/encodeddata.npy')
+tensor1 = torch.load('D:/20241.1-2024.8.31/Micro+photodiode+denoise/LAVSE/LAVSE-master/LAVSE-master/data/SP05/img_autoencoded_lip/SP05_320.pt')
+# Converting to a PyTorch tensor
+tensor = torch.from_numpy(npy_array)
+image_to_show = tensor[0, :, :, 0]
+plt.imshow(image_to_show, cmap='gray')
+plt.title('Channel 1 of the Tensor')
+plt.colorbar()
+plt.show()
+print(tensor.shape)
